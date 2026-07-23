@@ -8,9 +8,7 @@ import matplotlib.pyplot as plt
 # =============================================================================
 st.set_page_config(
     page_title="Dashboard DBD Indonesia",
-    page_icon="🩺",
-    layout="centered",
-    initial_sidebar_state="expanded"
+    page_icon="🩺"
 )
 
 # Warna aksen tetap (dipakai untuk elemen dekoratif yang memang selalu berwarna,
@@ -78,6 +76,14 @@ st.markdown(f"""
     div[data-testid="stImage"] img {{ border-radius: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }}
     .stCheckbox label, .stRadio label {{ color: var(--text-color); font-weight: 500; }}
     hr {{ margin: 0.5rem 0 1.5rem 0; border-color: rgba(128,128,128,0.3); }}
+
+    /* Info sumber data di sidebar */
+    .info-box p {{ margin: 0; }}
+    .info-box .info-label {{
+        font-style: italic; font-weight: 400; font-size: 0.85rem;
+        opacity: 0.75; margin-top: 0.8rem;
+    }}
+    .info-box .info-value {{ font-size: 0.95rem; font-weight: 600; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -427,3 +433,15 @@ elif app_mode == "Top 10 Provinsi":
             hide_index=True
         )
     section_end()
+
+# Info sumber data (selalu di bagian paling bawah sidebar)
+st.sidebar.markdown("""
+<div class="info-box">
+    <p class="info-label">Sumber Data</p>
+    <p class="info-value">Kementerian Kesehatan (Kemenkes)</p>
+    <p class="info-label">Periode</p>
+    <p class="info-value">2017–2024</p>
+    <p class="info-label">Cakupan</p>
+    <p class="info-value">38 Provinsi</p>
+</div>
+""", unsafe_allow_html=True)
